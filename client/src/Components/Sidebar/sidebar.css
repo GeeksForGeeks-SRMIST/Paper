@@ -1,0 +1,12 @@
+.sidebar {
+  height: 100vh;
+  /* position: fixed; */
+  box-shadow: 0 0 6px hsl(210 14% 90%);
+}
+.links {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
