@@ -6,6 +6,7 @@ import PrivateRoute from "./Components/Routing/privateRoute";
 import Landing from "./Pages/Landing";
 import LoginPage from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
+import CreatePaper from "./Pages/Paper";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={LoginPage} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/paper" component={CreatePaper} />
         </Switch>
       </div>
     </Router>

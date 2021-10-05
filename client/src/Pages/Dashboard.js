@@ -30,27 +30,30 @@ const Dashboard = () => {
         {/* Right hand side grid */}
         <Box className="right_grid">
           {/* Search Bar */}
-          <Grid container className="text_container">
+          <Grid container spacing={0} className="text_container">
             <Grid item xs={8} lg={8}>
-              <input
-                type="text"
-                placeholder="SEARCH FOR PAPERS"
-                className="text_field"
-              />
+              <center>
+                <input
+                  type="text"
+                  placeholder="SEARCH FOR PAPERS"
+                  className="text_field"
+                />
+              </center>
             </Grid>
-            <Grid item xs={2} lg={2} classname="button_container">
-              <Button
-                variant="outlined"
-                className="text_button"
-                style={{
-                  backgroundColor: "#17252a",
-                  color: "#FEFFFF",
-                  width: "100%",
-                  margin: "0 10vh",
-                }}
-              >
-                SEARCH
-              </Button>
+            <Grid item xs={2} lg={4} classname="button_container">
+              <center>
+                <Button
+                  variant="outlined"
+                  className="text_button"
+                  style={{
+                    backgroundColor: "#17252a",
+                    color: "#FEFFFF",
+                    width: "60%",
+                  }}
+                >
+                  SEARCH
+                </Button>
+              </center>
             </Grid>
           </Grid>
           <div className="card_div">

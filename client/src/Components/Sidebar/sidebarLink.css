@@ -31,3 +31,11 @@
 .link_profile > .MuiSvgIcon-root {
   margin: auto;
 }
+.active {
+  background-color: #e8f5fe;
+  color: #3aafa9;
+}
+.no-style {
+  text-decoration: none;
+  color: #17252a;
+}

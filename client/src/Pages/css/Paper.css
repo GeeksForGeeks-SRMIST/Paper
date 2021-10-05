@@ -1,0 +1,11 @@
+.right_grid_publish {
+  margin: 8vh 5vh;
+}
+.upload_div {
+  border-right: solid 1px rgb(196, 196, 196);
+  width: 95%;
+  height: 50vh;
+}
+.whole_div {
+  margin: 3vh 0;
+}

@@ -1,18 +1,14 @@
 import "./sidebarLink.css";
-function SidebarLink({ text, Icon, type }) {
+import { Link } from "react-router-dom";
+function SidebarLink({ text, Icon, className, href }) {
   return (
     <div>
-      {type === "profile" ? (
-        <div className="link_profile">
+      <Link to={`${href}`} className="no-style">
+        <div className={`link ${className}`}>
           <Icon />
           <h2>{text}</h2>
         </div>
-      ) : (
-        <div className="link">
-          <Icon />
-          <h2>{text}</h2>
-        </div>
-      )}
+      </Link>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import ListIcon from "@material-ui/icons/List";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
@@ -15,9 +16,24 @@ function Sidebar() {
     <div className="sidebar">
       {/* <SidebarLink text="Test Account" Icon={PersonIcon} type="profile" /> */}
       <div className="links">
-        <SidebarLink text="Home" Icon={HomeIcon} />
+        {console.log(window.location.pathname)}
+        <SidebarLink
+          text="Home"
+          Icon={HomeIcon}
+          className={`${
+            window.location.pathname == "/dashboard" ? "active" : "notActive"
+          }`}
+          href="/dashboard"
+        />
         <SidebarLink text="Explore" Icon={SearchIcon} />
-        <SidebarLink text="Notifications" Icon={NotificationsNoneIcon} />
+        <SidebarLink
+          text="Publish Paper"
+          Icon={ListIcon}
+          className={`${
+            window.location.pathname == "/paper" ? "active" : "notActive"
+          }`}
+          href="/paper"
+        />
         <SidebarLink text="Messages" Icon={MailOutlineIcon} />
         <SidebarLink text="Bookmarks" Icon={BookmarkBorderIcon} />
         <SidebarLink text="Lists" Icon={ListAltIcon} />
