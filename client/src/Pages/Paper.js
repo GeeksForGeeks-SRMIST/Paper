@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import firebase, { storage } from "../config/fire";
-import { Grid, Box, Paper, makeStyles } from "@material-ui/core";
+import { Grid, Box, Paper, makeStyles, Button } from "@material-ui/core";
 import Sidebar from "../Components/Sidebar/Sidebar";
+import Send from "@material-ui/icons/Send";
 import "./css/Paper.css";
 
 const PublishPaper = () => {
@@ -14,8 +15,6 @@ const PublishPaper = () => {
       backgroundColor: "#3AAFA9",
       padding: "10px",
       textAlign: "center",
-      background:
-        "linear-gradient(to bottom, rgba(58, 175, 169,.6), rgba(58, 175, 169,.4)), url('http://lorempixel.com/800/600/nature/2') center",
     },
   }));
 
@@ -74,15 +73,38 @@ const PublishPaper = () => {
                 <div className="upload_div">
                   <br />
                   <div className="card_chip">UPLOAD PDF</div>
-                  {path ? <h3>{path}</h3> : <p>ERROR</p>}
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    multiple={false}
-                    id="file"
-                    name="file"
-                    onChange={pdfHandler}
-                  />
+                  <div>
+                    <Grid container spacing={0}>
+                      <Grid item lg={3}>
+                        <Button
+                          variant="outlined"
+                          onClick={() => {
+                            document.getElementById("file").click();
+                          }}
+                          startIcon={<Send />}
+                        >
+                          UPLOAD
+                        </Button>
+                      </Grid>
+                      <Grid item lg={9}>
+                        <input
+                          type="text"
+                          disabled
+                          className="text_field"
+                          value={path}
+                        />
+                      </Grid>
+                    </Grid>
+                    <input
+                      type="file"
+                      accept=".pdf"
+                      multiple={false}
+                      hidden
+                      id="file"
+                      name="file"
+                      onChange={pdfHandler}
+                    />
+                  </div>
                 </div>
               </Grid>
               <Grid item xs={6} lg={6}>
@@ -90,7 +112,7 @@ const PublishPaper = () => {
                 <div className="card_chip">WRITE PAPER</div>
                 <Paper
                   elevation={4}
-                  className={classes.paper_topic_card}
+                  className={`card_bg_image ${classes.paper_topic_card}`}
                 ></Paper>
               </Grid>
             </Grid>

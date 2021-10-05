@@ -9,3 +9,6 @@
 .whole_div {
   margin: 3vh 0;
 }
+.card_bg_image {
+  background-image: url("../../Idea/tile_background_blue.png");
+}

@@ -17,6 +17,14 @@ const Dashboard = () => {
       backgroundColor: "#3AAFA9",
       padding: "10px",
       textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    },
+    paper_text: {
+      color: "#FEFFFF",
+      fontWeight: "bold",
+      fontSize: "25px",
     },
   }));
 
@@ -63,29 +71,44 @@ const Dashboard = () => {
             {/* Topic Cards */}
             <Grid container spacing={2}>
               <Grid item xs={3} lg={3} spacing={0}>
-                <Paper elevation={4} className={classes.paper_topic_card}>
-                  {/* <Typography variant="h5" className={classes.paper_text}>
-                  
-                </Typography> */}
+                <Paper
+                  elevation={4}
+                  className={`card_bg_image ${classes.paper_topic_card}`}
+                >
+                  <Typography variant="h4" className={classes.paper_text}>
+                    Computer Science
+                  </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
+                  className={`card_bg_image ${classes.paper_topic_card}`}
+                >
+                  <Typography variant="h4" className={classes.paper_text}>
+                    Computer Science
+                  </Typography>
+                </Paper>
               </Grid>
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
+                  className={`card_bg_image ${classes.paper_topic_card}`}
+                >
+                  <Typography variant="h4" className={classes.paper_text}>
+                    Computer Science
+                  </Typography>
+                </Paper>
               </Grid>
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
+                  className={`card_bg_image ${classes.paper_topic_card}`}
+                >
+                  <Typography variant="h4" className={classes.paper_text}>
+                    Computer Science
+                  </Typography>
+                </Paper>
               </Grid>
             </Grid>
           </div>
