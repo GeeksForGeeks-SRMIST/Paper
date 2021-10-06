@@ -1,13 +1,61 @@
 import React, { useState } from "react";
 import firebase, { storage } from "../config/fire";
-import { Grid, Box, Paper, makeStyles, Button } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  Paper,
+  makeStyles,
+  Button,
+  TextField,
+} from "@material-ui/core";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import Send from "@material-ui/icons/Send";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import "./css/Paper.css";
 
 const PublishPaper = () => {
+  let history = useHistory();
+
   const [path, updatePath] = useState("");
   const [fileState, setFileState] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+
+  let localData = JSON.parse(localStorage.getItem("data"));
+
+  const publish = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/api/paper/newPaper",
+        {
+          id: localData.user_id,
+          email: localData.identifier,
+          pdf_url: path,
+          title,
+          description,
+        },
+        config
+      );
+      history.push("/dashboard");
+    } catch (error) {
+      setError(error.response.data.error);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+      console.log(error);
+    }
+  };
 
   const useStyles = makeStyles((theme) => ({
     paper_topic_card: {
@@ -25,7 +73,7 @@ const PublishPaper = () => {
   };
 
   const pdfSaveHandler = (file) => {
-    if (file.name != undefined) {
+    if (file.name !== undefined) {
       const uploadTask = storage.child(`files/${file.name}`).put(file);
       uploadTask.on(
         "state_changed",
@@ -67,12 +115,13 @@ const PublishPaper = () => {
         <Grid item xs={9} lg={10}>
           {/* Right hand side grid */}
           <Box className="right_grid_publish">
-            <div className="card_chip">PUBLISH PAPER</div>
+            <div className="card_chip title_card">PUBLISH PAPER</div>
             <Grid container spacing={0} className="whole_div">
               <Grid item xs={6} lg={6}>
                 <div className="upload_div">
                   <br />
                   <div className="card_chip">UPLOAD PDF</div>
+                  <br />
                   <div>
                     <Grid container spacing={0}>
                       <Grid item lg={3}>
@@ -105,6 +154,46 @@ const PublishPaper = () => {
                       onChange={pdfHandler}
                     />
                   </div>
+                  <br />
+                  <div className="card_chip">PAPER TITLE</div>
+                  <br />
+                  <div>
+                    <TextField
+                      placeholder="PAPER TITLE"
+                      multiline
+                      fullWidth
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </div>
+                  <br />
+                  <div className="card_chip">PAPER DESCRIPTION</div>
+                  <br />
+                  <div>
+                    <TextField
+                      placeholder="PAPER DESCRIPTION"
+                      multiline
+                      fullWidth
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                  <br />
+                  <br />
+                  <center>
+                    <Button
+                      variant="outlined"
+                      className="text_button"
+                      style={{
+                        backgroundColor: "#17252a",
+                        color: "#FEFFFF",
+                        width: "60%",
+                      }}
+                      onClick={publish}
+                    >
+                      SUBMIT
+                    </Button>
+                  </center>
                 </div>
               </Grid>
               <Grid item xs={6} lg={6}>
@@ -114,6 +203,22 @@ const PublishPaper = () => {
                   elevation={4}
                   className={`card_bg_image ${classes.paper_topic_card}`}
                 ></Paper>
+                <br />
+                <br />
+                <center>
+                  <Button
+                    variant="outlined"
+                    className="text_button"
+                    style={{
+                      backgroundColor: "#17252a",
+                      color: "#FEFFFF",
+                      width: "60%",
+                    }}
+                    href="/write"
+                  >
+                    WRITE PAPER
+                  </Button>
+                </center>
               </Grid>
             </Grid>
           </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import "./css/Dashboard.css";
 import {
@@ -9,8 +9,37 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
+import axios from "axios";
 
 const Dashboard = () => {
+  let localData = JSON.parse(localStorage.getItem("data"));
+
+  const [userPapers, setUserPapers] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      try {
+        const { data } = await axios.get(
+          `http://localhost:5000/api/paper/userPapers/${localData.user_id}`,
+          config
+        );
+        setUserPapers(data);
+      } catch (error) {
+        setError("You are not authorized please login");
+        console.log(error);
+      }
+    };
+
+    getUserData();
+  }, []);
+
   const useStyles = makeStyles((theme) => ({
     paper_topic_card: {
       height: theme.spacing(20),
@@ -73,10 +102,10 @@ const Dashboard = () => {
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={`card_bg_image ${classes.paper_topic_card}`}
+                  className={`card_bg_image_yellow ${classes.paper_topic_card}`}
                 >
                   <Typography variant="h4" className={classes.paper_text}>
-                    Computer Science
+                    COMPUTER SCIENCE
                   </Typography>
                 </Paper>
               </Grid>
@@ -86,27 +115,27 @@ const Dashboard = () => {
                   className={`card_bg_image ${classes.paper_topic_card}`}
                 >
                   <Typography variant="h4" className={classes.paper_text}>
-                    Computer Science
+                    PHYSICS
                   </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={`card_bg_image ${classes.paper_topic_card}`}
+                  className={`card_bg_image_green ${classes.paper_topic_card}`}
                 >
                   <Typography variant="h4" className={classes.paper_text}>
-                    Computer Science
+                    MATHEMATICS
                   </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={3} lg={3} spacing={0}>
                 <Paper
                   elevation={4}
-                  className={`card_bg_image ${classes.paper_topic_card}`}
+                  className={`card_bg_image_pink ${classes.paper_topic_card}`}
                 >
                   <Typography variant="h4" className={classes.paper_text}>
-                    Computer Science
+                    QUANTITATIVE BIOLOGY
                   </Typography>
                 </Paper>
               </Grid>
@@ -118,31 +147,13 @@ const Dashboard = () => {
             </Grid>
             {/* USER PAPER Cards */}
             <Grid container spacing={2}>
-              <Grid item xs={3} lg={3} spacing={0}>
-                <Paper elevation={4} className={classes.paper_topic_card}>
-                  {/* <Typography variant="h5" className={classes.paper_text}>
-                  
-                </Typography> */}
-                </Paper>
-              </Grid>
-              <Grid item xs={3} lg={3} spacing={0}>
-                <Paper
-                  elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
-              </Grid>
-              <Grid item xs={3} lg={3} spacing={0}>
-                <Paper
-                  elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
-              </Grid>
-              <Grid item xs={3} lg={3} spacing={0}>
-                <Paper
-                  elevation={4}
-                  className={classes.paper_topic_card}
-                ></Paper>
-              </Grid>
+              {userPapers.map((paper) => (
+                <Grid item xs={3} lg={3} spacing={0}>
+                  <Paper elevation={4} className={classes.paper_topic_card}>
+                    {paper.title}
+                  </Paper>
+                </Grid>
+              ))}
             </Grid>
           </div>
         </Box>

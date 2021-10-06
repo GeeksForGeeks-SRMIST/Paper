@@ -4,10 +4,10 @@ import SidebarLink from "./SidebarLink";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import Create from "@material-ui/icons/Create";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import ListIcon from "@material-ui/icons/List";
+import Publish from "@material-ui/icons/CloudUploadOutlined";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
@@ -25,16 +25,23 @@ function Sidebar() {
           }`}
           href="/dashboard"
         />
-        <SidebarLink text="Explore" Icon={SearchIcon} />
+        <SidebarLink text="Explore" Icon={SearchIcon} href="/search" />
         <SidebarLink
           text="Publish Paper"
-          Icon={ListIcon}
+          Icon={Publish}
           className={`${
             window.location.pathname == "/paper" ? "active" : "notActive"
           }`}
           href="/paper"
         />
-        <SidebarLink text="Messages" Icon={MailOutlineIcon} />
+        <SidebarLink
+          text="Write Paper"
+          Icon={Create}
+          className={`${
+            window.location.pathname == "/write" ? "active" : "notActive"
+          }`}
+          href="/write"
+        />
         <SidebarLink text="Bookmarks" Icon={BookmarkBorderIcon} />
         <SidebarLink text="Lists" Icon={ListAltIcon} />
         <SidebarLink text="Profile" Icon={PermIdentityIcon} />

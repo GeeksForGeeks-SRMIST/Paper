@@ -4,11 +4,26 @@
 .upload_div {
   border-right: solid 1px rgb(196, 196, 196);
   width: 95%;
-  height: 50vh;
+  padding: 0 1vh;
+  height: 110%;
 }
 .whole_div {
   margin: 3vh 0;
 }
 .card_bg_image {
   background-image: url("../../Idea/tile_background_blue.png");
+}
+.card_bg_image_yellow {
+  background-image: url("../../Idea/tile_background_yellow.png");
+}
+.card_bg_image_green {
+  background-image: url("../../Idea/tile_background_green.png");
+}
+.card_bg_image_pink {
+  background-image: url("../../Idea/tile_background_pink.png");
+}
+.title_card {
+  background-color: #2b7a78;
+  color: #feffff;
+  border: none;
 }
