@@ -6,21 +6,20 @@ import { EditorState, convertToRaw } from "draft-js";
 import "../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import { jsPDF } from "jspdf";
-import parse from "html-react-parser";
+import "./css/Write.css";
 
 const Write = () => {
   const [editorState, setData] = useState(EditorState.createEmpty());
   const [htmlData, setHtmlData] = useState("");
 
   const toPDF = () => {
-    const doc = new jsPDF({
-      orientation: "landscape",
-      unit: "in",
-      format: [11.7, 8.3],
-    });
+    const doc = new jsPDF("p", "pt", "a4");
 
-    doc.text(parse(htmlData), 1, 1);
-    doc.save("textData.pdf");
+    doc.html(document.querySelector(".public-DraftEditor-content"), {
+      callback: function (pdf) {
+        pdf.save("abc.pdf");
+      },
+    });
   };
 
   return (
@@ -40,18 +39,20 @@ const Write = () => {
                 );
               }}
             />
-            <Button
-              variant="outlined"
-              className="text_button"
-              style={{
-                backgroundColor: "#17252a",
-                color: "#FEFFFF",
-                width: "60%",
-              }}
-              onClick={toPDF}
-            >
-              COVERT TO PDF
-            </Button>
+            <center>
+              <Button
+                variant="outlined"
+                className="text_button"
+                style={{
+                  backgroundColor: "#17252a",
+                  color: "#FEFFFF",
+                  width: "60%",
+                }}
+                onClick={toPDF}
+              >
+                COVERT TO PDF
+              </Button>
+            </center>
           </Box>
         </Grid>
       </Grid>
