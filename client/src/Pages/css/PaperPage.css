@@ -1,10 +1,19 @@
 .banner_image {
-  background: url("../../Idea/tile_background_blue.png");
-  height: 150px;
+  height: 100px;
   margin: 0;
-  /* box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45); */
+  opacity: 70%;
+}
+.blue {
+  background: url("../../Idea/tile_background_blue.png");
+}
+.green {
+  background: url("../../Idea/tile_background_green.png");
+}
+.pink {
+  background: url("../../Idea/tile_background_pink.png");
+}
+.gold {
+  background: url("../../Idea/tile_background_yellow.png");
 }
 .document {
   border-radius: 20px;
@@ -20,4 +29,12 @@
 }
 .content_grid {
   padding-right: 5vh;
+}
+.subject_pill {
+  border: solid 2px rgb(121, 121, 121);
+  width: fit-content;
+  padding: 1vh 3vh;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
 }

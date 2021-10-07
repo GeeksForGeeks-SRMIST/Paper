@@ -2,7 +2,7 @@ const Paper = require("../models/paperModel");
 const ErrorResponse = require("../utils/errorResponse");
 
 exports.newPaper = async (req, res, next) => {
-  const { id, email, pdf_url, title, description } = req.body;
+  const { id, email, pdf_url, title, description, subject } = req.body;
 
   try {
     const paper = await Paper.create({
@@ -11,6 +11,7 @@ exports.newPaper = async (req, res, next) => {
       pdf_url,
       title,
       description,
+      subject,
     });
     await paper.save();
     res.send(paper);

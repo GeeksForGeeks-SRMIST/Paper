@@ -6,6 +6,7 @@ test.rest
 node_modules/
 /.pnp
 .pnp.js
+model_pickle
 
 # testing
 /coverage

@@ -22,9 +22,30 @@ const PublishPaper = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [subject, setSubject] = useState("");
   const [error, setError] = useState("");
 
   let localData = JSON.parse(localStorage.getItem("data"));
+
+  async function predict(query) {
+    var myParams = {
+      data: query,
+    };
+
+    if (query != "") {
+      await axios
+        .post("http://localhost:7000/predict", myParams)
+        .then(function (response) {
+          console.log(response);
+          setSubject(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      alert("The search query cannot be empty");
+    }
+  }
 
   const publish = async (e) => {
     e.preventDefault();
@@ -44,6 +65,7 @@ const PublishPaper = () => {
           pdf_url: path,
           title,
           description,
+          subject: subject,
         },
         config
       );
@@ -181,6 +203,24 @@ const PublishPaper = () => {
                   <br />
                   <br />
                   <center>
+                    <Button
+                      variant="outlined"
+                      className="text_button"
+                      style={{
+                        backgroundColor: "#17252a",
+                        color: "#FEFFFF",
+                        width: "60%",
+                      }}
+                      onClick={() => {
+                        if (title) {
+                          predict(`${title}`);
+                        } else {
+                          console.log("Title not available");
+                        }
+                      }}
+                    >
+                      ADD SUBJECT
+                    </Button>
                     <Button
                       variant="outlined"
                       className="text_button"

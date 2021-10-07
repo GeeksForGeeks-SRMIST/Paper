@@ -22,6 +22,10 @@ const paperSchema = new mongoose.Schema(
       type: String,
       required: "{PATH} is required!",
     },
+    subject: {
+      type: String,
+      required: "{PATH} is required!",
+    },
   },
   { timestamps: true }
 );

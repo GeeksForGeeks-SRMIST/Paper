@@ -21,6 +21,20 @@ const PaperPage = (props) => {
     getPaper();
   }, []);
 
+  let classN = "";
+
+  if (data.subject == "Maths") {
+    classN = "green";
+  } else if (data.subject == "Physics") {
+    classN = "blue";
+  } else if (data.subject == "Computer Science") {
+    classN = "gold";
+  } else if (data.subject == "Biology") {
+    classN = "pink";
+  } else {
+    classN = "pink";
+  }
+
   return (
     <div>
       <Grid container spacing={0}>
@@ -29,11 +43,12 @@ const PaperPage = (props) => {
         </Grid>
         <Grid item xs={9} lg={10}>
           {/* Right hand side grid */}
-          <div className="banner_image"></div>
+          <div className={`banner_image ${classN}`}></div>
           <Box className="right_grid_publish">
             <Grid container spacing={0}>
               <Grid item xs={8} lg={8} className="content_grid">
                 <p className="paper_title">{data.title}</p>
+                <div className="subject_pill">{data.subject}</div>
                 <p className="paper_des">{data.description}</p>
                 <center>
                   <Button
@@ -56,7 +71,7 @@ const PaperPage = (props) => {
                   className="document"
                   src={`${data.pdf_url}` + `#toolbar=0`}
                   width="100%"
-                  height="500vh"
+                  height="470vh"
                   name={data.title}
                 ></iframe>
               </Grid>

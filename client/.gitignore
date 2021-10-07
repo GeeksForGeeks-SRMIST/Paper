@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .env
+model_pickle
 
 # testing
 /coverage
