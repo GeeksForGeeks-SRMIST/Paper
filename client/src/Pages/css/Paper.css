@@ -22,8 +22,14 @@
 .card_bg_image_pink {
   background-image: url("../../Idea/tile_background_pink.png");
 }
+.card_bg_image_pink:hover,
+.card_bg_image_green:hover,
+.card_bg_image_yellow:hover,
+.card_bg_image:hover {
+  filter: hue-rotate(90deg);
+  transition: 0.5s;
+}
 .title_card {
-  background-color: #2b7a78;
-  color: #feffff;
-  border: none;
+  border: solid 3px black;
+  font-weight: bold;
 }

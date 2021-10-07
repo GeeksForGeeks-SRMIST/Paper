@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import "./css/Dashboard.css";
+import { useHistory } from "react-router-dom";
 import {
   Grid,
   Box,
@@ -12,10 +13,15 @@ import {
 import axios from "axios";
 
 const Dashboard = () => {
+  let history = useHistory();
   let localData = JSON.parse(localStorage.getItem("data"));
 
   const [userPapers, setUserPapers] = useState([]);
   const [error, setError] = useState("");
+
+  const redirect = () => {
+    history.push("/search");
+  };
 
   useEffect(() => {
     const getUserData = async () => {
@@ -74,6 +80,7 @@ const Dashboard = () => {
                   type="text"
                   placeholder="SEARCH FOR PAPERS"
                   className="text_field"
+                  onClick={redirect}
                 />
               </center>
             </Grid>
@@ -82,6 +89,7 @@ const Dashboard = () => {
                 <Button
                   variant="outlined"
                   className="text_button"
+                  onClick={redirect}
                   style={{
                     backgroundColor: "#17252a",
                     color: "#FEFFFF",
@@ -149,9 +157,25 @@ const Dashboard = () => {
             <Grid container spacing={2}>
               {userPapers.map((paper) => (
                 <Grid item xs={3} lg={3} spacing={0}>
-                  <Paper elevation={4} className={classes.paper_topic_card}>
-                    {paper.title}
-                  </Paper>
+                  {console.log(paper)}
+                  <iframe
+                    src={paper.pdf_url}
+                    width="100%"
+                    height="100%"
+                    name={paper.title}
+                  ></iframe>
+                  <Button
+                    variant="outlined"
+                    className="text_button"
+                    style={{
+                      backgroundColor: "#17252a",
+                      color: "#FEFFFF",
+                      width: "50%",
+                    }}
+                    href={`/paper/${paper._id}`}
+                  >
+                    VIEW PAPER
+                  </Button>
                 </Grid>
               ))}
             </Grid>

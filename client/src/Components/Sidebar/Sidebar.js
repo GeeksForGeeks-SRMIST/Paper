@@ -9,7 +9,7 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import Publish from "@material-ui/icons/CloudUploadOutlined";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import MoreHorizIcon from "@material-ui/icons/ExitToAppOutlined";
 
 function Sidebar() {
   return (
@@ -43,9 +43,9 @@ function Sidebar() {
           href="/write"
         />
         <SidebarLink text="Bookmarks" Icon={BookmarkBorderIcon} />
-        <SidebarLink text="Lists" Icon={ListAltIcon} />
+        <SidebarLink text="All Papers" Icon={ListAltIcon} />
         <SidebarLink text="Profile" Icon={PermIdentityIcon} />
-        <SidebarLink text="More" Icon={MoreHorizIcon} />
+        <SidebarLink text="Log Out" Icon={MoreHorizIcon} />
       </div>
     </div>
   );

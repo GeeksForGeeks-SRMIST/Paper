@@ -1,0 +1,23 @@
+.banner_image {
+  background: url("../../Idea/tile_background_blue.png");
+  height: 150px;
+  margin: 0;
+  /* box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.45); */
+}
+.document {
+  border-radius: 20px;
+}
+.paper_title {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.paper_des {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 150%;
+}
+.content_grid {
+  padding-right: 5vh;
+}

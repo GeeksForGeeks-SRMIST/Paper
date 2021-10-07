@@ -24,3 +24,14 @@ exports.userPapers = async (req, res, next) => {
   const papers = await Paper.find({ id: userId });
   res.send(papers);
 };
+
+exports.getPaper = async (req, res, next) => {
+  let paperId = req.params.paper;
+  const paper = await Paper.findById(paperId);
+  res.send(paper);
+};
+
+exports.getAll = async (req, res, next) => {
+  const papers = await Paper.find();
+  res.send(papers);
+};

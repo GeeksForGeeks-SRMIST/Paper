@@ -2,8 +2,9 @@
   max-width: 100%;
 }
 .public-DraftEditor-content {
-  padding: 10px;
+  border: solid 0.5px black;
+  padding: 20px;
   width: 587px;
   height: 834px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
