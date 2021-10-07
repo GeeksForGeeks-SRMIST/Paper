@@ -1,12 +1,16 @@
 import React from "react";
 
-import { Typography, makeStyles, Box } from "@material-ui/core";
+import { Typography, makeStyles, Box, Grid } from "@material-ui/core";
 
 import Navbar from "../Components/Navbar";
+import Image from "../Idea/img.jpg";
+import "./css/Landing.css";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
     textAlign: "center",
+    height: "100vh",
+    margin: "auto 0",
   },
 }));
 
@@ -14,15 +18,38 @@ const Landing = () => {
   const classes = useStyles();
   return (
     <>
-      <Navbar />
-      <Box className={classes.heading}>
-        <Typography variant="h2" component="h1">
-          Welcome to research.
-        </Typography>
-        <Typography variant="h4" component="h3">
-          The all in one portal for all your research needs.
-        </Typography>
-      </Box>
+      <div className="body">
+        <Navbar />
+        <div class="container">
+          <div class="wrapper">
+            <div class="header"></div>
+            <div class="main">
+              <div class="hero-img">
+                <img src={Image} alt="" className="image" />
+              </div>
+              <div class="hero-text">
+                <h1>Read the latest from the greatest minds</h1>
+                <p>
+                  Paper re-imagines the way we read and analyse the latest from
+                  every field. You can upload as well as create research papers.
+                </p>
+                <a href="/login">LOGIN</a>
+              </div>
+            </div>
+            <div class="social">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

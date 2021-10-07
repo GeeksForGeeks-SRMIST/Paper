@@ -85,6 +85,7 @@ const PublishPaper = () => {
       backgroundColor: "#3AAFA9",
       padding: "10px",
       textAlign: "center",
+      color: "#ffffff",
     },
   }));
 
@@ -161,7 +162,7 @@ const PublishPaper = () => {
                         <input
                           type="text"
                           disabled
-                          className="text_field"
+                          className="text_field_2"
                           value={path}
                         />
                       </Grid>
@@ -221,6 +222,8 @@ const PublishPaper = () => {
                     >
                       ADD SUBJECT
                     </Button>
+                    <br />
+                    <br />
                     <Button
                       variant="outlined"
                       className="text_button"
@@ -242,7 +245,15 @@ const PublishPaper = () => {
                 <Paper
                   elevation={4}
                   className={`card_bg_image ${classes.paper_topic_card}`}
-                ></Paper>
+                >
+                  <center>
+                    <h4>- Write your oen paper in your own style</h4>
+                    <h4>- Publish your paper instantly in a PDF format</h4>
+                    <h4>
+                      - NLP Model to automatically predict subject of the paper
+                    </h4>
+                  </center>
+                </Paper>
                 <br />
                 <br />
                 <center>
