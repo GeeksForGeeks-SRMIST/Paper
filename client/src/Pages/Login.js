@@ -14,7 +14,6 @@ const LoginPage = () => {
       apiKey: process.env.REACT_APP_SAWO_KEY,
       // Add a callback here to handle the payload sent by sdk
       onSuccess: (payload) => {
-        console.log(payload);
         localStorage.setItem("data", JSON.stringify(payload));
         history.push("/dashboard");
       },

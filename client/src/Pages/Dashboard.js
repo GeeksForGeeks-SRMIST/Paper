@@ -157,7 +157,6 @@ const Dashboard = () => {
             <Grid container spacing={2}>
               {userPapers.map((paper) => (
                 <Grid item xs={3} lg={3} spacing={0}>
-                  {console.log(paper)}
                   <iframe
                     src={paper.pdf_url}
                     width="100%"

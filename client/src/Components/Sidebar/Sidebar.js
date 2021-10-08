@@ -14,9 +14,7 @@ import MoreHorizIcon from "@material-ui/icons/ExitToAppOutlined";
 function Sidebar() {
   return (
     <div className="sidebar">
-      {/* <SidebarLink text="Test Account" Icon={PersonIcon} type="profile" /> */}
       <div className="links">
-        {console.log(window.location.pathname)}
         <SidebarLink
           text="Home"
           Icon={HomeIcon}
