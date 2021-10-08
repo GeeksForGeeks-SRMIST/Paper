@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Box,
@@ -8,8 +8,11 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import Sidebar from "../Components/Sidebar/Sidebar";
+import axios from "axios";
 
 const Search = () => {
+  const [data, setData] = useState([]);
+
   const useStyles = makeStyles((theme) => ({
     paper_topic_card: {
       height: theme.spacing(20),
@@ -28,6 +31,18 @@ const Search = () => {
   }));
 
   const classes = useStyles();
+
+  useEffect(() => {
+    const getPapers = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/paper/getAll`);
+        setData(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPapers();
+  }, []);
 
   return (
     <div>
@@ -112,6 +127,19 @@ const Search = () => {
                 </Grid>
               </Grid>
             </div>
+            <div className="card_chip">RECENTLY UPLOADED PAPERS</div>
+            <Grid container spacing={2}>
+              {data.map((paper) => (
+                <Grid item xs={3} lg={3} spacing={0}>
+                  <iframe
+                    src={paper.pdf_url}
+                    width="100%"
+                    height="100%"
+                    name={paper.title}
+                  ></iframe>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Grid>
       </Grid>

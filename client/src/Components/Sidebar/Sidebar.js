@@ -25,7 +25,14 @@ function Sidebar() {
           }`}
           href="/dashboard"
         />
-        <SidebarLink text="Explore" Icon={SearchIcon} href="/search" />
+        <SidebarLink
+          text="Explore"
+          Icon={SearchIcon}
+          className={`${
+            window.location.pathname == "/search" ? "active" : "notActive"
+          }`}
+          href="/search"
+        />
         <SidebarLink
           text="Publish Paper"
           Icon={Publish}
